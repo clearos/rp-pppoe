@@ -1,7 +1,7 @@
 Summary: A PPP over Ethernet client (for xDSL support).
 Name: rp-pppoe
 Version: 3.11
-Release: 4%{?dist}
+Release: 5%{?dist}
 License: GPLv2+
 Group: System Environment/Daemons
 Url: http://www.roaringpenguin.com/pppoe/
@@ -117,6 +117,9 @@ fi
 %{_mandir}/man?/*
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 3.11-5
+- Mass rebuild 2013-12-27
+
 * Mon May 13 2013 Than Ngo <than@redhat.com> - 3.11-4
 - bz#961529, add Requirement on net-tools
 
