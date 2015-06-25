@@ -117,6 +117,10 @@ fi
 %{_mandir}/man?/*
 
 %changelog
+* Wed Jun 18 2014 ClearFoundation <developer@clearfoundation.com> - 3.11-5.clear
+- add multi-wan support in helper scripts
+- add resolv-peerdns.conf support in helper scripts
+
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 3.11-5
 - Mass rebuild 2013-12-27
 
