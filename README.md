@@ -2,9 +2,6 @@
 
 Forked version of rp-pppoe with ClearOS changes applied
 
-## Update usage
-  Add __#kojibuild__ to commit message to automatically build
-
 * git clone git+ssh://git@github.com/clearos/rp-pppoe.git
 * cd rp-pppoe
 * git checkout c7
