@@ -20,7 +20,7 @@ ID=/usr/bin/id
 NETWORKDIR=/etc/sysconfig/network-scripts
 PAPFILE=/etc/ppp/chap-secrets
 CHAPFILE=/etc/ppp/pap-secrets
-RESOLVFILE=/etc/resolv.conf
+RESOLVFILE=/etc/resolv-peerdns.conf
 
 # Set to "C" locale so we can parse messages from commands
 LANG=C

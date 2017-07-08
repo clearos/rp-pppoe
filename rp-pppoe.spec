@@ -62,7 +62,9 @@ make
 rm -rf %{buildroot}
 
 mkdir -p %{buildroot}/sbin
-mkdir -p %{buildroot}%{_sysconfdir}/etc/rc.d/init.d
+# ClearFoundation - this is odd. /etc/etc/rc.d/init.d is the original (?)
+# mkdir -p %{buildroot}%{_sysconfdir}/etc/rc.d/init.d
+mkdir -p %{buildroot}%{_sysconfdir}/rc.d/init.d
 
 make -C src install DESTDIR=%{buildroot}
 
@@ -182,6 +184,10 @@ exit 0
 %{_sbindir}/*
 
 %changelog
+* Tue Aug 9 2016 ClearFoundation <developer@clearfoundation.com> - 3.10-16.clear
+- add multi-wan support in helper scripts
+- add resolv-peerdns.conf support in helper scripts
+
 * Mon Feb 29 2016 Than Ngo <than@redhat.com> - 3.10-16
 - add missing BR on ppp-devel
 

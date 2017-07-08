@@ -275,7 +275,15 @@ if test "`basename \"$LINUX_PLUGIN\"`" = "pppoatm.so" ; then
     PLUGIN_OPTS="$PLUGIN_OPTS $VPI.$VCI"
     modprobe pppoatm > /dev/null 2>&1
 fi
-DEFROUTE=$DEFAULTROUTE
+# ClearFoundation -- always disable DEFROUTE in a Multi-WAN environment
+if [ -e /etc/clearos/network.conf ]; then
+    . /etc/clearos/network.conf
+    MULTIEXT=`echo $EXTIF | awk '{ print $2 }'`
+    if [ -n "${MULTIEXT}" ]; then
+        DEFROUTE="no"
+    fi
+fi
+# Point Clark Networks -- end
 if test "$DEFROUTE" != "no" ; then
     DEFAULTROUTE="defaultroute"
     # pppd will no longer delete an existing default route

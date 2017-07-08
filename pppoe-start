@@ -107,11 +107,11 @@ if [ "$DEBUG" = "1" ] ; then
     $ECHO "Output of netstat -n -r" >> $DEBUG
     netstat -n -r >> $DEBUG
     $ECHO "---------------------------------------------" >> $DEBUG
-    $ECHO "Contents of /etc/resolv.conf" >> $DEBUG
+    $ECHO "Contents of /etc/resolv-peerdns.conf" >> $DEBUG
     $ECHO "* The following section lists DNS setup." >> $DEBUG
     $ECHO "* If you can browse by IP address, but not name, suspect" >> $DEBUG
     $ECHO "* a DNS problem." >> $DEBUG
-    cat /etc/resolv.conf >> $DEBUG
+    cat /etc/resolv-peerdns.conf >> $DEBUG
     $ECHO "---------------------------------------------" >> $DEBUG
     $ECHO "* The following section lists /etc/ppp/options." >> $DEBUG
     $ECHO "* You should have NOTHING in that file." >> $DEBUG
