@@ -1,0 +1,11 @@
+diff -up rp-pppoe-3.10/src/configure.in.than rp-pppoe-3.10/src/configure.in
+--- rp-pppoe-3.10/src/configure.in.than	2016-02-29 17:40:36.630101904 +0100
++++ rp-pppoe-3.10/src/configure.in	2016-02-29 18:05:59.027663134 +0100
+@@ -180,6 +180,7 @@ else
+ fi
+ ])
+ 
++ac_cv_linux_kernel_pppoe=yes
+ AC_MSG_RESULT($ac_cv_linux_kernel_pppoe)
+ 
+ if test "$ac_cv_linux_kernel_pppoe" != yes ; then

@@ -1,0 +1,23 @@
+diff -up rp-pppoe-3.10/src/configure.in.than rp-pppoe-3.10/src/configure.in
+--- rp-pppoe-3.10/src/configure.in.than	2016-01-27 16:21:36.432512394 +0100
++++ rp-pppoe-3.10/src/configure.in	2016-01-27 16:22:32.540422719 +0100
+@@ -26,6 +26,7 @@ AC_CHECK_HEADERS(linux/if_pppox.h, [], [
+ #include<net/ethernet.h>
+ #include<linux/if.h>
+ #include<linux/in.h>
++#include<linux/in6.h>
+ ])
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+diff -up rp-pppoe-3.10/src/pppoe-server.c.than rp-pppoe-3.10/src/pppoe-server.c
+--- rp-pppoe-3.10/src/pppoe-server.c.than	2016-01-27 16:30:08.357324461 +0100
++++ rp-pppoe-3.10/src/pppoe-server.c	2016-01-27 16:30:52.570661720 +0100
+@@ -1781,7 +1781,7 @@ startPPPDLinuxKernelMode(ClientSession *
+ 
+     argv[c++] = "pppd";
+     argv[c++] = "plugin";
+-    argv[c++] = PLUGIN_PATH;
++    argv[c++] = "rp-pppoe.so";
+ 
+     /* Add "nic-" to interface name */
+     snprintf(buffer, SMALLBUF, "nic-%s", session->ethif->name);
