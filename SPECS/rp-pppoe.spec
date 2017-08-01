@@ -1,7 +1,7 @@
 Summary: A PPP over Ethernet client (for xDSL support).
 Name: rp-pppoe
 Version: 3.11
-Release: 5%{?dist}
+Release: 7%{?dist}
 License: GPLv2+
 Group: System Environment/Daemons
 Url: http://www.roaringpenguin.com/pppoe/
@@ -15,6 +15,7 @@ Source6: pppoe-server.service
 
 Patch0: rp-pppoe-3.8-redhat.patch
 Patch1: rp-pppoe-3.11-ip-allocation.patch
+Patch2: rp-pppoe-manpages.patch
 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -52,6 +53,7 @@ the official PPPoE specification.
 %setup -q
 %patch0 -p1 -b .config
 %patch1 -p1 -b .ip-allocation
+%patch2 -p1
 
 %build
 cd src
@@ -72,10 +74,12 @@ install -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}
 install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}
 install -m 0755 %{SOURCE4} %{buildroot}%{_sbindir}
 install -m 0755 %{SOURCE5} %{buildroot}%{_sbindir}
-install -m 0755 %{SOURCE6} %{buildroot}%{_unitdir}/pppoe-server.service
+install -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/pppoe-server.service
 
 ln -sf pppoe-stop %{buildroot}%{_sbindir}/adsl-stop
 ln -sf pppoe-start %{buildroot}%{_sbindir}/adsl-start
+ln -fs pppoe-start.8 %{buildroot}%{_mandir}/man8/adsl-start.8
+ln -fs pppoe-stop.8 %{buildroot}%{_mandir}/man8/adsl-stop.8
 
 rm -rf %{buildroot}/etc/ppp/pppoe.conf \
        %{buildroot}/etc/rc.d/init.d/pppoe \
@@ -117,6 +121,12 @@ fi
 %{_mandir}/man?/*
 
 %changelog
+* Wed Feb 15 2017 Than Ngo <than@redhat.com> - 3.11-7
+- Resolves: bz#1422019, pppoe-server.service is marked executable
+
+* Fri Jun 03 2016 Than Ngo <than@redhat.com> - 3.11-6
+- Resolves: bz#948950, fix manpage issues
+
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 3.11-5
 - Mass rebuild 2013-12-27
 
